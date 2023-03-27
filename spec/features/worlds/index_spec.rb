@@ -1,4 +1,3 @@
-# spec/features/parent_index_spec.rb
 require 'rails_helper'
 
 describe 'User Story 1, World Index' do
