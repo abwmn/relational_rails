@@ -82,5 +82,31 @@ RSpec.describe "Inhabitants Index", type: :feature do
       expect(page).to have_content(inhabitant2.name)
       expect(page).not_to have_content(inhabitant1.name)
     end
+
+    it "User Story 23: Child Delete From Childs Index Page - Inhabitants" do
+      visit inhabitants_path
+    
+      within("#inhabitant-#{inhabitant1.id}") do
+        click_link 'Delete Inhabitant'
+      end
+    
+      expect(current_path).to eq(inhabitants_path)
+      expect(page).not_to have_content(inhabitant1.name)
+    end
+    
+    it "User Story 23: Child Delete From Parent Childs Index Page - City Inhabitants" do
+      inhabitant3 = Inhabitant.create!(name: "Inhabitant3", age: 32, married: true, role: "Engineer", city_id: city2.id)
+    
+      visit "/cities/#{city1.id}/city_inhabitants"
+      # expect(page).to have_link("Delete Inhabitant", href: delete_city_inhabitant_path(city1, inhabitant1))
+    
+      within("#inhabitant-#{inhabitant2.id}") do
+        click_link 'Delete Inhabitant'
+      end
+    
+      expect(current_path).to eq(city_inhabitants_path(city1))
+      expect(page).not_to have_content(inhabitant2.name)
+
+    end
   end
 end
