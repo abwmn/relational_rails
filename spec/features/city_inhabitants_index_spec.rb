@@ -9,7 +9,7 @@ describe 'User Story 5, Parent Children Index' do
       inhabitant1 = Inhabitant.create!(name: "John Doe", age: 30, married: false, role: "Engineer", city_id: city1.id)
       inhabitant2 = Inhabitant.create!(name: "Jane Doe", age: 29, married: false, role: "Doctor", city_id: city1.id)
 
-      visit "/cities/#{city1.id}/inhabitants"
+      visit "/cities/#{city1.id}/city_inhabitants"
       expect(page).to have_content(inhabitant1.name)
       expect(page).to have_content(inhabitant1.age)
       expect(page).to have_content(inhabitant1.married)
