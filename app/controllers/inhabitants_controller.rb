@@ -38,6 +38,9 @@ class InhabitantsController < ApplicationController
     else
       @inhabitants = @city.inhabitants
     end
+    if params[:min_age]
+      @inhabitants = @inhabitants.where('age >= ?', params[:min_age])
+    end
   end
 
   private

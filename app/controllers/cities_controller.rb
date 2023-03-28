@@ -64,6 +64,9 @@ class CitiesController < ApplicationController
     else
       @cities = @world.cities.order(created_at: :desc)
     end
+    if params[:min_population]
+      @cities = @cities.where('population >= ?', params[:min_population])
+    end
   end
 
   private
