@@ -12,7 +12,7 @@
     <li><b>Number of inhabitants:</b> <%= city.inhabitants.count %></li>
     <%= link_to 'Inhabitants', "/cities/#{city.id}/city_inhabitants" %><br>
     <%= link_to 'Edit City', edit_city_path(city) %><br>
-    <%= link_to 'Delete World', city_path(city), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Delete City', city_path(city), method: :delete, data: { confirm: 'Are you sure?' } %>
     </div>
   <% end %>
 </ul>
