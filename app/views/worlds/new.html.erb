@@ -1,0 +1,17 @@
+<h2>New World</h2>
+
+<%= form_with model: @world, url: worlds_path do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :number_of_continents %>
+  <%= f.number_field :number_of_continents %>
+
+  <%= f.label :climate %>
+  <%= f.text_field :climate %>
+
+  <%= f.label :inhabitable %>
+  <%= f.check_box :inhabitable %>
+
+  <%= f.submit 'Create World' %>
+<% end %>

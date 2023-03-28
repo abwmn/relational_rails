@@ -1,0 +1,25 @@
+<h2>New City</h2>
+
+<%= form_for @city do |f| %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :world_id, "World" %>
+    <%= f.select :world_id, World.all.collect { |world| [world.name, world.id] } %>
+  </div>
+  <div>
+    <%= f.label :population %>
+    <%= f.number_field :population %>
+  </div>
+  <div>
+    <%= f.label :technological_level %>
+    <%= f.number_field :technological_level %>
+  </div>
+  <div>
+    <%= f.label :inhabited %>
+    <%= f.check_box :inhabited %>
+  </div>
+  <%= f.submit "Create City" %>
+<% end %>
