@@ -10,7 +10,7 @@ RSpec.describe 'New City', type: :feature do
 
       expect(current_path).to eq(new_city_path)
 
-      fill_in 'Name', with: 'New York'
+      fill_in 'Name', with: 'New City'
       select 'Earth', from: 'World'
       fill_in 'Population', with: 8500000
       fill_in 'Technological level', with: 8
@@ -19,7 +19,7 @@ RSpec.describe 'New City', type: :feature do
       click_button 'Create City'
 
       expect(current_path).to eq(cities_path)
-      expect(page).to have_content('New York')
+      expect(page).to have_content('New City')
     end
   end
 end
