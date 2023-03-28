@@ -2,6 +2,6 @@
 
 <ul>
   <% @worlds.each do |world| %>
-    <li><%= world.name %></li>
+    <li>Name: <%= world.name %> - Created: <%= world.created_at.to_s(:long) %></li>
   <% end %>
 </ul>
