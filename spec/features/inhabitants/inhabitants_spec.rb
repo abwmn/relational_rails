@@ -24,12 +24,12 @@ RSpec.describe "Inhabitants Index", type: :feature do
     it "User Story 8: I see a link at the top of the page that takes me to the Child Index" do
       visit worlds_path
 
-      click_link 'Inhabitants Index'
+      click_link 'Inhabitant Portraits Index'
       expect(current_path).to eq(inhabitants_path)
 
       visit cities_path
 
-      click_link 'Inhabitants Index'
+      click_link 'Inhabitant Portraits Index'
       expect(current_path).to eq(inhabitants_path)
     end
 

@@ -11,7 +11,7 @@ describe 'User Story 7, Parent Child Count' do
       expect(page).to have_content("Number of cities: #{world.cities.count}")
 
       visit "/cities/#{city1.id}"
-      expect(page).to have_content("Number of inhabitants: #{city1.inhabitants.count}")
+      expect(page).to have_content("Inhabitant portraits: #{city1.inhabitants.count}")
     end
   end
 end
