@@ -7,11 +7,11 @@ describe 'User Story 10, Parent Child Index Link' do
       city = City.create!(name: "New York City", population: 8_000_000, technological_level: 8, inhabited: true, world_id: world.id)
 
       visit "/worlds/#{world.id}"
-      click_link "Cities"
+      click_link "Show Cities"
       expect(current_path).to eq("/worlds/#{world.id}/world_cities")
 
       visit "/cities/#{city.id}"
-      click_link "Inhabitants"
+      click_link "Show Inhabitant Portraits"
       expect(current_path).to eq("/cities/#{city.id}/city_inhabitants")
     end
   end

@@ -1,20 +1,31 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 # db/seeds.rb
+include Generator
 World.destroy_all
 City.destroy_all
 Inhabitant.destroy_all
 
-world1 = World.create!(name: "Earth", number_of_continents: 7, climate: "diverse", inhabitable: true)
-world2 = World.create!(name: "Mars", number_of_continents: 0, climate: "arid", inhabitable: false)
+mercury = World.create!(name: "Mercury", number_of_continents: 0, climate: "arid", inhabitable: false)
+venus = World.create!(name: "Venus", number_of_continents: 0, climate: "gaseous", inhabitable: false)
+earth = World.create!(name: "Earth", number_of_continents: 7, climate: "diverse", inhabitable: true)
+mars = World.create!(name: "Mars", number_of_continents: 0, climate: "arid", inhabitable: false)
 
-city1 = City.create!(name: "New York City", population: 8_000_000, technological_level: 8, inhabited: true, world_id: world1.id)
-city2 = City.create!(name: "San Francisco", population: 883_305, technological_level: 9, inhabited: true, world_id: world1.id)
+earth_cities = ["New York City", "London", "Tokyo", "Paris", "Istanbul"]
+earth_cities.each do |city_name|
+  city = City.create!(
+    name: city_name,
+    population: rand(6000000..9000000),
+    world_id: earth.id,
+    inhabited: true
+  )
+  Generator.generate_inhabitants(city, rand(111..333))
+end
 
-inhabitant1 = Inhabitant.create!(name: "John Doe", age: 30, married: false, role: "Engineer", city_id: city1.id)
-inhabitant2 = Inhabitant.create!(name: "Jane Doe", age: 28, married: true, role: "Doctor", city_id: city1.id)
+3.times do
+  world = World.create!(
+    name: Generator.generate_world_name,
+    climate: Generator.generate_climate,
+    number_of_continents: rand(0..9),
+    inhabitable: true
+  )
+  Generator.generate_cities(world, rand(1..4))
+end

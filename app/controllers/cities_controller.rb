@@ -1,9 +1,10 @@
 class CitiesController < ApplicationController
+  include Generator
   def index
     if params[:sort] == 'name'
-      @cities = City.where(inhabited: true).order(:name)
+      @cities = City.where(inhabited: true).order(:name).page(params[:page]).per(50)
     else
-      @cities = City.where(inhabited: true).order(created_at: :desc)
+      @cities = City.where(inhabited: true).order(created_at: :desc).page(params[:page]).per(50)
     end
   end
 
@@ -55,19 +56,33 @@ class CitiesController < ApplicationController
 
   def show
     @city = City.find(params[:id])
+    @inhabitants = @city.inhabitants.order(created_at: :desc).page(params[:page]).per(50)
   end
+  
 
   def world_cities
     @world = World.find(params[:world_id])
     if params[:sort] == 'name'
-      @cities = @world.cities.order(:name)
+      @cities = @world.cities.order(:name).page(params[:page]).per(50)
     else
-      @cities = @world.cities.order(created_at: :desc)
+      @cities = @world.cities.order(created_at: :desc).page(params[:page]).per(50)
     end
     if params[:min_population]
       @cities = @cities.where('population >= ?', params[:min_population])
     end
   end
+
+  def generate_inhabitants_action
+    @city = City.find(params[:id])
+  
+    count = rand(55..222)
+    generate_inhabitants(@city, count)
+  
+    flash[:success] = "#{count} new inhabitants have been generated!"
+    redirect_to city_path(@city)
+  end
+  
+  
 
   private
   
