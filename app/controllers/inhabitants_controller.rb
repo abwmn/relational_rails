@@ -25,6 +25,12 @@ class InhabitantsController < ApplicationController
     end
   end
 
+  def destroy
+    @inhabitant = Inhabitant.find(params[:id])
+    @inhabitant.destroy
+    redirect_to inhabitants_path
+  end
+
   def city_inhabitants
     @city = City.find(params[:city_id])
     if params[:sort] == 'name'

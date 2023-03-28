@@ -3,3 +3,5 @@
 <p>Age: <%= @inhabitant.age %></p>
 <p>Married: <%= @inhabitant.married %></p>
 <p>Role: <%= @inhabitant.role %></p>
+<%= link_to "Delete Inhabitant", inhabitant_path(@inhabitant), method: :delete, data: { confirm: "Are you sure?" } %>
+

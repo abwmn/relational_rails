@@ -5,3 +5,4 @@
 <p>Number of cities: <%= @world.cities.count %></p>
 <%= link_to 'Cities', "/worlds/#{@world.id}/world_cities" %>
 <%= link_to 'Update World', edit_world_path(@world) %>
+<%= link_to "Delete World", world_path(@world), method: :delete, data: { confirm: "Are you sure?" } %>

@@ -6,3 +6,4 @@
 <p>Number of inhabitants: <%= @city.inhabitants.count %></p>
 <%= link_to 'Inhabitants', "/cities/#{@city.id}/city_inhabitants" %>
 <%= link_to 'Update City', edit_city_path(@city) %>
+<%= link_to "Delete City", city_path(@city), method: :delete, data: { confirm: "Are you sure?" } %>
