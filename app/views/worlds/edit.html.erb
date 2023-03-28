@@ -1,0 +1,21 @@
+<h2>Edit World</h2>
+
+<%= form_with model: @world, local: true do |f| %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :number_of_continents %>
+    <%= f.number_field :number_of_continents %>
+  </div>
+  <div>
+    <%= f.label :climate %>
+    <%= f.number_field :climate %>
+  </div>
+  <div>
+    <%= f.label :inhabitable %>
+    <%= f.check_box :inhabitable %>
+  </div>
+  <%= f.submit "Update World" %>
+<% end %>

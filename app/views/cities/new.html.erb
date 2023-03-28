@@ -1,25 +1,28 @@
-<h2>New City</h2>
+<% if @world %>
+  <h2>New City for <%= @world.name %></h2>
+<% else %>
+  <h2>New City</h2>
+<% end %>
 
-<%= form_for @city do |f| %>
-  <div>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-  <div>
+<%= form_with model: @world ? [@world, @city] : @city, local: true do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :population %>
+  <%= f.number_field :population %>
+
+  <%= f.label :technological_level %>
+  <%= f.number_field :technological_level %>
+
+  <%= f.label :inhabited %>
+  <%= f.check_box :inhabited %>
+
+  <% if @world %>
+    <%= f.hidden_field :world_id, value: @world.id %>
+  <% else %>
     <%= f.label :world_id, "World" %>
     <%= f.select :world_id, World.all.collect { |world| [world.name, world.id] } %>
-  </div>
-  <div>
-    <%= f.label :population %>
-    <%= f.number_field :population %>
-  </div>
-  <div>
-    <%= f.label :technological_level %>
-    <%= f.number_field :technological_level %>
-  </div>
-  <div>
-    <%= f.label :inhabited %>
-    <%= f.check_box :inhabited %>
-  </div>
-  <%= f.submit "Create City" %>
+  <% end %>
+
+  <%= f.submit 'Create City' %>
 <% end %>

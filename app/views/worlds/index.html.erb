@@ -2,9 +2,8 @@
 <%= link_to 'New World', new_world_path %>
 <ul>
   <% @worlds.each do |world| %>
-    <h4>Name: <%= world.name %></h4>
+    <h3><%= link_to world.name, world_path(world) %></h3>
     <li>Created: <%= world.created_at.to_s(:long) %></li>
-    <li>Name: <%= world.name %></li>
     <li>Number of Continents: <%= world.number_of_continents %></li>
     <li>Climate: <%= world.climate %></li>
     <li>Inhabitable: <%= world.inhabitable %></li>

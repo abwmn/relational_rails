@@ -1,7 +1,8 @@
-<p>Name: <%= @city.name %></p>
+<h2><%= @city.name %></h2>
 <p>World: <%= @city.world.name %></p>
 <p>Population: <%= @city.population %></p>
 <p>Technological Level: <%= @city.technological_level %></p>
 <p>Inhabited: <%= @city.inhabited %></p>
 <p>Number of inhabitants: <%= @city.inhabitants.count %></p>
 <%= link_to 'Inhabitants', "/cities/#{@city.id}/city_inhabitants" %>
+<%= link_to 'Update City', edit_city_path(@city) %>

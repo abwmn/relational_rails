@@ -11,9 +11,23 @@ class WorldsController < ApplicationController
     @world = World.new(world_params)
     
     if @world.save
-      redirect_to worlds_path
+      redirect_to worlds_url
     else
       render :new
+    end
+  end
+
+  def edit
+    @world = World.find(params[:id])
+  end
+  
+  def update
+    @world = World.find(params[:id])
+    
+    if @world.update(world_params)
+      redirect_to world_path(@world)
+    else
+      render :edit
     end
   end
 

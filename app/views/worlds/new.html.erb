@@ -1,6 +1,6 @@
 <h2>New World</h2>
 
-<%= form_with model: @world, url: worlds_path do |f| %>
+<%= form_with model: @world, local: true do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
 

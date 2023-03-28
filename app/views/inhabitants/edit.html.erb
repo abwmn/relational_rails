@@ -1,0 +1,23 @@
+<h2>Edit Inhabitant</h2>
+
+<%= form_with model: @inhabitant, local: true do |f| %>
+  <div>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  </div>
+  <div>
+  <%= f.label :age %>
+  <%= f.number_field :age %>
+  </div>
+  <div>
+  <%= f.label :city_id, "City" %>
+  <%= f.select :city_id, City.all.collect { |city| [city.name, city.id] } %>
+  </div>
+  <div>
+  <%= f.label :married %>
+  <%= f.check_box :married %> 
+  </div>
+  <div>
+  <%= f.submit 'Update Inhabitant' %>
+  </div>
+<% end %>

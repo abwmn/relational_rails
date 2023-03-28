@@ -1,4 +1,5 @@
 <h3>Name: <%= @inhabitant.name %></h3>
+<%= link_to 'Update Inhabitant', edit_inhabitant_path(@inhabitant) %>
 <p>Age: <%= @inhabitant.age %></p>
 <p>Married: <%= @inhabitant.married %></p>
 <p>Role: <%= @inhabitant.role %></p>

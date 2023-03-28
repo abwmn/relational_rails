@@ -1,8 +1,9 @@
 <h2>All Cities</h2>
-<%= link_to 'New City', new_city_path %>
+<%= link_to 'New City', new_city_path %><br>
+<%= link_to 'Sort by Name', cities_path(sort: 'name') %>
 <ul>
   <% @cities.each do |city| %>
-    <h3>Name: <%= city.name %></h3>
+    <h3><%= link_to city.name, city_path(city) %></h3>
     <li>Created: <%= city.created_at.to_s(:long) %></li>
     <li>Population: <%= city.population %></li>
     <li>Technological Level: <%= city.technological_level %></li>
