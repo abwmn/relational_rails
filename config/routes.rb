@@ -4,8 +4,12 @@ Rails.application.routes.draw do
   get '/worlds', to: 'worlds#index'
   get '/worlds/new', to: 'worlds#new', as: 'new_world'
   post '/worlds', to: 'worlds#create'
+  get '/worlds/:world_id/world_cities/new', to: 'cities#new', as: 'new_world_city'
+  post '/worlds/:world_id/world_cities', to: 'cities#create'
   get '/worlds/:world_id/world_cities', to: 'cities#world_cities', as: 'world_cities'
   get '/worlds/:id', to: 'worlds#show', as: 'world'
+  get '/worlds/:id/edit', to: 'worlds#edit', as: 'edit_world'
+  patch '/worlds/:id', to: 'worlds#update'
 
   get '/cities', to: 'cities#index'
   get '/cities/new', to: 'cities#new', as: 'new_city'
@@ -17,4 +21,6 @@ Rails.application.routes.draw do
 
   get '/inhabitants', to: 'inhabitants#index'
   get '/inhabitants/:id', to: 'inhabitants#show', as: 'inhabitant'
+  get '/inhabitants/:id/edit', to: 'inhabitants#edit', as: 'edit_inhabitant'
+  patch '/inhabitants/:id', to: 'inhabitants#update'
 end
