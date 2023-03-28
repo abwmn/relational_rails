@@ -11,6 +11,18 @@ RSpec.describe "Cities Index", type: :feature do
       expect(page).to have_content(city2.name)
     end
 
+    it "User Story 8: I see a link at the top of the page that takes me to the Child Index" do
+      visit worlds_path
+
+      click_link 'Cities Index'
+      expect(current_path).to eq(cities_path)
+
+      visit cities_path
+
+      click_link 'Cities Index'
+      expect(current_path).to eq(cities_path)
+    end
+
     it "User Story 15: Only displays inhabited cities" do
       inhabited_city = City.create!(name: "Test City 1", population: 1000, inhabited: true, world_id: world.id)
       uninhabited_city = City.create!(name: "Test City 2", population: 2000, inhabited: false, world_id: world.id)
@@ -48,6 +60,16 @@ RSpec.describe "Cities Index", type: :feature do
   
       expect(current_path).to eq(cities_path)
       expect(page).not_to have_content(city1.name)
+    end
+
+    it "User Story 21: Display Records Over a Given Threshold - World Cities" do
+      visit "/worlds/#{world.id}/world_cities"
+    
+      fill_in "Minimum Population:", with: "7500000"
+      click_button "Filter"
+    
+      expect(page).to have_content(city1.name)
+      expect(page).not_to have_content(city2.name)
     end
   end
 end

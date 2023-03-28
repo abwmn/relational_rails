@@ -6,9 +6,9 @@ RSpec.describe "Inhabitants Index", type: :feature do
     let!(:city1) {City.create!(name: "New York City", population: 8_000_000, technological_level: 8, inhabited: true, world_id: world.id)}
     let!(:city2) {City.create!(name: "San Francisco", population: 883_000, technological_level: 9, inhabited: true, world_id: world.id)}
     let!(:inhabitant1){Inhabitant.create!(name: "John Doe", age: 30, married: true, role: "Engineer", city_id: city1.id)}
-    let!(:inhabitant2){Inhabitant.create!(name: "Jane Doe", age: 29, married: true, role: "Doctor", city_id: city1.id)}
+    let!(:inhabitant2){Inhabitant.create!(name: "Jane Doe", age: 33, married: true, role: "Doctor", city_id: city1.id)}
 
-    it "User Story 5, Parent Children Index: I see each Child that is associated with that Parent with each Child's attributes" do
+    it "User Story 5: I see each Child that is associated with that Parent with each Child's attributes" do
       visit "/cities/#{city1.id}/city_inhabitants"
       expect(page).to have_content(inhabitant1.name)
       expect(page).to have_content(inhabitant1.age)
@@ -19,6 +19,18 @@ RSpec.describe "Inhabitants Index", type: :feature do
       expect(page).to have_content(inhabitant2.age)
       expect(page).to have_content(inhabitant2.married)
       expect(page).to have_content(inhabitant2.role)
+    end
+
+    it "User Story 8: I see a link at the top of the page that takes me to the Child Index" do
+      visit worlds_path
+
+      click_link 'Inhabitants Index'
+      expect(current_path).to eq(inhabitants_path)
+
+      visit cities_path
+
+      click_link 'Inhabitants Index'
+      expect(current_path).to eq(inhabitants_path)
     end
 
     it "User Story 15: Only displays inhabitants with married set to true" do
@@ -58,6 +70,16 @@ RSpec.describe "Inhabitants Index", type: :feature do
       click_link "Delete Inhabitant"
   
       expect(current_path).to eq(inhabitants_path)
+      expect(page).not_to have_content(inhabitant1.name)
+    end
+
+    it "User Story 21: Display Records Over a Given Threshold - City Inhabitants" do
+      visit "/cities/#{city1.id}/city_inhabitants"
+    
+      fill_in "Minimum Age:", with: "31"
+      click_button "Filter"
+    
+      expect(page).to have_content(inhabitant2.name)
       expect(page).not_to have_content(inhabitant1.name)
     end
   end
