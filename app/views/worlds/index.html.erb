@@ -1,5 +1,6 @@
 <h2>Worlds</h2>
-<%= link_to 'New World', new_world_path %>
+<%= button_to 'Custom, Empty New World', new_world_path %>
+<%= button_to 'Random, Populated New World', generate_world_path, method: :post %>
 <ul>
   <% @worlds.each do |world| %>
     <div id="world-<%= world.id %>">
@@ -9,9 +10,11 @@
     <li>Climate: <%= world.climate %></li>
     <li>Inhabitable: <%= world.inhabitable %></li>
     <li>Number of cities: <%= world.cities.count %></li><br>
-    <%= link_to 'Cities', "/worlds/#{world.id}/world_cities" %><br>
+    <%= link_to 'Show Cities', "/worlds/#{world.id}/world_cities" %><br>
+    <%= link_to "Generate City", generate_city_world_path(world), method: :post, class: "btn btn-primary" %><br>
     <%= link_to 'Edit World', edit_world_path(world) %><br>
-    <%= link_to 'Delete World', world_path(world), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Delete World', world_path(world), method: :delete, data: { confirm: 'Are you sure?' } %><br>
     </div>
   <% end %>
 </ul>
+<%= paginate @worlds %>

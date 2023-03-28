@@ -10,9 +10,11 @@
     <li><b>Technological Level:</b> <%= city.technological_level %></li>
     <li><b>Inhabited:</b> <%= city.inhabited %></li>
     <li><b>Number of inhabitants:</b> <%= city.inhabitants.count %></li>
-    <%= link_to 'Inhabitants', "/cities/#{city.id}/city_inhabitants" %><br>
+    <%= link_to 'Show Inhabitant Portraits', "/cities/#{city.id}/city_inhabitants" %><br>
+    <%= link_to 'Generate Inhabitant Portraits', generate_inhabitants_city_path(city), method: :post, class: "btn btn-primary" %>
     <%= link_to 'Edit City', edit_city_path(city) %><br>
     <%= link_to 'Delete City', city_path(city), method: :delete, data: { confirm: 'Are you sure?' } %>
     </div>
   <% end %>
 </ul>
+<%= paginate @cities %>

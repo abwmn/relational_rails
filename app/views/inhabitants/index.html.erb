@@ -1,4 +1,4 @@
-<h2>All Inhabitants</h1>
+<h2>All Inhabitant Portraits</h1>
 <%= link_to 'Sort by Name', inhabitants_path(sort: 'name') %>
 <ul>
   <% @inhabitants.each do |inhabitant| %>
@@ -12,3 +12,4 @@
     </div>
   <% end %>
 </ul>
+<%= paginate @inhabitants %>
