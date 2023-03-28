@@ -71,5 +71,18 @@ RSpec.describe "Cities Index", type: :feature do
       expect(page).to have_content(city1.name)
       expect(page).not_to have_content(city2.name)
     end
+
+    it "User Story 22: Parent Delete From Parent Index Page - Cities" do
+      city1 = City.create!(name: "City1", population: 1_000_000, technological_level: 7, inhabited: true, world_id: world.id)
+    
+      visit cities_path
+    
+      within("#city-#{city1.id}") do
+        click_link 'Delete'
+      end
+    
+      expect(current_path).to eq(cities_path)
+      expect(page).not_to have_content(city1.name)
+    end
   end
 end

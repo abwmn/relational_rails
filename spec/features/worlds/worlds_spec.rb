@@ -28,5 +28,18 @@ RSpec.describe "Worlds Index", type: :feature do
       expect(current_path).to eq(worlds_path)
       expect(page).not_to have_content(world1.name)
     end
+
+    it "User Story 22: Parent Delete From Parent Index Page - Worlds" do
+      world1 = World.create!(name: "World1", number_of_continents: 5, climate: "temperate", inhabitable: true)
+    
+      visit worlds_path
+    
+      within("#world-#{world1.id}") do
+        click_link 'Delete'
+      end
+    
+      expect(current_path).to eq(worlds_path)
+      expect(page).not_to have_content(world1.name)
+    end
   end
 end
