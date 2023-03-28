@@ -6,5 +6,6 @@
     <li>Age: <%= inhabitant.age %></li>
     <li>Married: <%= inhabitant.married %></li>
     <li>Role: <%= inhabitant.role %></li>
+    <%= link_to 'Edit Inhabitant', edit_inhabitant_path(inhabitant) %>
   <% end %>
 </ul>

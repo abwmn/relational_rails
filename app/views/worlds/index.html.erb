@@ -2,12 +2,15 @@
 <%= link_to 'New World', new_world_path %>
 <ul>
   <% @worlds.each do |world| %>
+    <div id="world-<%= world.id %>">
     <h3><%= link_to world.name, world_path(world) %></h3>
     <li>Created: <%= world.created_at.to_s(:long) %></li>
     <li>Number of Continents: <%= world.number_of_continents %></li>
     <li>Climate: <%= world.climate %></li>
     <li>Inhabitable: <%= world.inhabitable %></li>
-    <li>Number of cities: <%= world.cities.count %></li>
-    <%= link_to 'Cities', "/worlds/#{world.id}/world_cities" %>
+    <li>Number of cities: <%= world.cities.count %></li><br>
+    <%= link_to 'Cities', "/worlds/#{world.id}/world_cities" %><br>
+    <%= link_to 'Edit World', edit_world_path(world) %>
+    </div>
   <% end %>
 </ul>
