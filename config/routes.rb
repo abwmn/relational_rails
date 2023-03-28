@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   get '/worlds/:id', to: 'worlds#show', as: 'world'
   get '/cities', to: 'cities#index'
   get '/cities/:id', to: 'cities#show', as: 'city'
+  get '/inhabitants', to: 'inhabitants#index'
 end
