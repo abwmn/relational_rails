@@ -9,10 +9,13 @@
 
 <ul>
   <% @inhabitants.each do |inhabitant| %>
+    <div id="inhabitant-<%= inhabitant.id %>">
     <h3><%= link_to inhabitant.name, inhabitant_path(inhabitant) %></h3>
     <li><b>Age:</b> <%= inhabitant.age %></li>
     <li><b>Married:</b> <%= inhabitant.married %></li>
     <li><b>Role:</b> <%= inhabitant.role %></li>
-    <%= link_to 'Edit Inhabitant', edit_inhabitant_path(inhabitant) %>
+    <%= link_to 'Edit Inhabitant', edit_inhabitant_path(inhabitant) %><br>
+    <%= link_to 'Delete Inhabitant', delete_city_inhabitant_path(@city, inhabitant), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
   <% end %>
 </ul>

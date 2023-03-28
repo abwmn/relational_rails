@@ -26,9 +26,15 @@ class InhabitantsController < ApplicationController
   end
 
   def destroy
-    @inhabitant = Inhabitant.find(params[:id])
-    @inhabitant.destroy
-    redirect_to inhabitants_path
+    inhabitant = Inhabitant.find(params[:id])
+    city = inhabitant.city
+    inhabitant.destroy
+  
+    if request.referer.include?('city_inhabitants')
+      redirect_to city_inhabitants_path(city)
+    else
+      redirect_to inhabitants_path
+    end
   end
 
   def city_inhabitants
