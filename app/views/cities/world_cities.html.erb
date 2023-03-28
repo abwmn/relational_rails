@@ -1,8 +1,8 @@
 <h2><%= @world.name %> Cities</h2>
 <%= link_to 'New City', new_world_city_path(@world) %><br>
-<%= link_to 'Sort by Name', show_world_path(@world, sort: 'name') %>
+<%= link_to 'Sort by Name', world_cities_path(@world, sort: 'name') %>
 
-<%= form_with url: show_world_path(@world), method: :get, local: true do |form| %>
+<%= form_with url: world_cities_path(@world), method: :get, local: true do |form| %>
   <%= form.label :min_population, 'Minimum Population:' %>
   <%= form.number_field :min_population, min: 0 %>
   <%= form.submit 'Filter' %>

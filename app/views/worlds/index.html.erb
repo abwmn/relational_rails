@@ -1,5 +1,5 @@
 <h2>Worlds</h2>
-<%= button_to 'Custom, Empty New World', new_world_path %>
+<%= link_to 'Custom, Empty New World', new_world_path, class: 'btn btn-primary' %><br><br>
 <%= button_to 'Random, Populated New World', generate_world_path, method: :post %>
 <ul>
   <% @worlds.each do |world| %>
