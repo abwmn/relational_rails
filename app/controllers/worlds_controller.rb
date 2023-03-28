@@ -1,6 +1,6 @@
 class WorldsController < ApplicationController
   def index
-    @worlds = World.all
+    @worlds = World.order(created_at: :desc)
   end
 
   def show

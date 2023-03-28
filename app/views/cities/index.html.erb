@@ -2,6 +2,6 @@
 
 <ul>
   <% @cities.each do |city| %>
-    <li><%= city.name %></li>
+    <li>Name: <%= city.name %> - Created: <%= city.created_at.to_s(:long) %></li>
   <% end %>
 </ul>
