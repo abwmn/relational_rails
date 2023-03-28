@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_28_023005) do
+ActiveRecord::Schema.define(version: 2023_03_28_031154) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,18 @@ ActiveRecord::Schema.define(version: 2023_03_28_023005) do
     t.index ["world_id"], name: "index_cities_on_world_id"
   end
 
+  create_table "inhabitants", force: :cascade do |t|
+    t.string "name"
+    t.integer "age"
+    t.boolean "married"
+    t.boolean "has_children"
+    t.string "role"
+    t.bigint "city_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_inhabitants_on_city_id"
+  end
+
   create_table "worlds", force: :cascade do |t|
     t.string "name"
     t.integer "number_of_continents"
@@ -36,4 +48,5 @@ ActiveRecord::Schema.define(version: 2023_03_28_023005) do
   end
 
   add_foreign_key "cities", "worlds"
+  add_foreign_key "inhabitants", "cities"
 end
