@@ -1,6 +1,9 @@
-<% @inhabitants.each do |inhabitant| %>
-  <p>Name: <%= inhabitant.name %></p>
-  <p>Age: <%= inhabitant.age %></p>
-  <p>Married: <%= inhabitant.married %></p>
-  <p>Role: <%= inhabitant.role %></p>
-<% end %>
+<h2><%= @city.name %> Inhabitants</h2>
+<ul>
+  <% @inhabitants.each do |inhabitant| %>
+    <h4>Name: <%= inhabitant.name %></h4>
+    <li>Age: <%= inhabitant.age %></li>
+    <li>Married: <%= inhabitant.married %></li>
+    <li>Role: <%= inhabitant.role %></li>
+  <% end %>
+</ul>

@@ -1,7 +1,14 @@
-<h1>Worlds</h1>
+<h2>Worlds</h2>
 
 <ul>
   <% @worlds.each do |world| %>
-    <li>Name: <%= world.name %> - Created: <%= world.created_at.to_s(:long) %></li>
+    <h4>Name: <%= world.name %></h4>
+    <li>Created: <%= world.created_at.to_s(:long) %></li>
+    <li>Name: <%= world.name %></li>
+    <li>Number of Continents: <%= world.number_of_continents %></li>
+    <li>Climate: <%= world.climate %></li>
+    <li>Inhabitable: <%= world.inhabitable %></li>
+    <li>Number of cities: <%= world.cities.count %></li>
+    <%= link_to 'Cities', "/worlds/#{world.id}/world_cities" %>
   <% end %>
 </ul>

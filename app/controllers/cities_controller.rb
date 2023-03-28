@@ -6,4 +6,9 @@ class CitiesController < ApplicationController
   def show
     @city = City.find(params[:id])
   end
+
+  def world_cities
+    @world = World.find(params[:world_id])
+    @cities = @world.cities
+  end
 end

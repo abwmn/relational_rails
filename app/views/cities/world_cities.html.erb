@@ -1,8 +1,7 @@
-<h1>All Cities</h1>
-
+<h2><%= @world.name %> Cities</h2>
 <ul>
   <% @cities.each do |city| %>
-    <h3>Name: <%= city.name %></h3>
+    <h4>Name: <%= city.name %></h4>
     <li>Created: <%= city.created_at.to_s(:long) %></li>
     <li>Population: <%= city.population %></li>
     <li>Technological Level: <%= city.technological_level %></li>
