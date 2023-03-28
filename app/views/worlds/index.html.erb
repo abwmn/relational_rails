@@ -10,7 +10,8 @@
     <li>Inhabitable: <%= world.inhabitable %></li>
     <li>Number of cities: <%= world.cities.count %></li><br>
     <%= link_to 'Cities', "/worlds/#{world.id}/world_cities" %><br>
-    <%= link_to 'Edit World', edit_world_path(world) %>
+    <%= link_to 'Edit World', edit_world_path(world) %><br>
+    <%= link_to 'Delete World', world_path(world), method: :delete, data: { confirm: 'Are you sure?' } %>
     </div>
   <% end %>
 </ul>

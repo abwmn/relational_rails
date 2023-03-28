@@ -5,13 +5,14 @@
   <% @cities.each do |city| %>
     <div id="city-<%= city.id %>">
     <h3><%= link_to city.name, city_path(city) %></h3>
-    <li>Created: <%= city.created_at.to_s(:long) %></li>
-    <li>Population: <%= city.population %></li>
-    <li>Technological Level: <%= city.technological_level %></li>
-    <li>Inhabited: <%= city.inhabited %></li>
-    <li>Number of inhabitants: <%= city.inhabitants.count %></li>
+    <li><b>Created:</b> <%= city.created_at.to_s(:long) %></li>
+    <li><b>Population:</b> <%= city.population %></li>
+    <li><b>Technological Level:</b> <%= city.technological_level %></li>
+    <li><b>Inhabited:</b> <%= city.inhabited %></li>
+    <li><b>Number of inhabitants:</b> <%= city.inhabitants.count %></li>
     <%= link_to 'Inhabitants', "/cities/#{city.id}/city_inhabitants" %><br>
-    <%= link_to 'Edit City', edit_city_path(city) %>
+    <%= link_to 'Edit City', edit_city_path(city) %><br>
+    <%= link_to 'Delete World', city_path(city), method: :delete, data: { confirm: 'Are you sure?' } %>
     </div>
   <% end %>
 </ul>
