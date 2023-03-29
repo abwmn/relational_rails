@@ -1,5 +1,5 @@
-<h2><%= @city.name %></h2>
-<p>World: <%= @city.world.name %></p>
+<h2><%= link_to "#{@city.name}", world_cities_path(@city.world) %></h2>
+<p>World: <%= link_to "#{@city.world.name}", show_world_path(@city.world) %></p>
 <p>Population: <%= @city.population %></p>
 <p>Technological Level: <%= @city.technological_level %></p>
 <p>Inhabited: <%= @city.inhabited %></p>

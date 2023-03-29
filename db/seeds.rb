@@ -14,6 +14,7 @@ earth_cities.each do |city_name|
   city = City.create!(
     name: city_name,
     population: rand(6000000..9000000),
+    technological_level: rand(6..9)
     world_id: earth.id,
     inhabited: true
   )
@@ -24,7 +25,7 @@ end
   world = World.create!(
     name: Generator.generate_world_name,
     climate: Generator.generate_climate,
-    number_of_continents: rand(0..9),
+    number_of_continents: rand(0..99),
     inhabitable: true
   )
   Generator.generate_cities(world, rand(1..4))

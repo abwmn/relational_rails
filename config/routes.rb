@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   post '/worlds/:id/generate_city', to: 'worlds#generate_city', as: 'generate_city_world'
   patch '/worlds/:id', to: 'worlds#update'
   delete '/worlds/:id', to: 'worlds#destroy', as: 'delete_world'
+  get '/worlds/:id', to: 'worlds#show', as: 'world'
 
 
 
@@ -26,7 +27,6 @@ Rails.application.routes.draw do
   delete '/cities/:id', to: 'cities#destroy', as: 'delete_city'
   delete '/cities/:city_id/city_inhabitants/:id', to: 'inhabitants#destroy', as: 'delete_city_inhabitant'
   post "/cities/:id/generate_inhabitants", to: "cities#generate_inhabitants_action", as: "generate_inhabitants_city"
-get '/worlds/:id', to: 'worlds#show', as: 'world'
 
 
 
