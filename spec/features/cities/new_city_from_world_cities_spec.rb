@@ -8,7 +8,7 @@ RSpec.describe 'New City from World Cities page', type: :feature do
 
     click_link 'New City'
 
-    expect(current_path).to eq("/worlds/#{world.id}/world_cities/new")
+    expect(current_path).to eq("/cities/new.#{world.id}")
 
     fill_in 'Name', with: 'New City'
     fill_in 'Population', with: 50000
@@ -17,7 +17,7 @@ RSpec.describe 'New City from World Cities page', type: :feature do
 
     click_button 'Create City'
 
-    expect(current_path).to eq("/worlds/#{world.id}/world_cities")
+    expect(current_path).to eq("/cities")
     expect(page).to have_content('New City')
   end
 end
