@@ -1,4 +1,4 @@
-<h2><%= @world.name %></h2>
+<h2><%= link_to "#{@world.name}", worlds_path %></h2>
 <p>Number of Continents: <%= @world.number_of_continents %></p>
 <p>Climate: <%= @world.climate %></p>
 <p>Inhabitable: <%= @world.inhabitable %></p>

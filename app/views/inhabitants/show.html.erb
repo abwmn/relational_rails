@@ -1,7 +1,7 @@
-<h3>Name: <%= @inhabitant.name %></h3>
-<%= link_to 'Update Inhabitant', edit_inhabitant_path(@inhabitant) %>
+<h3><%= link_to "#{@inhabitant.name}", city_inhabitants_path(@inhabitant.city) %></h3>
 <p>Age: <%= @inhabitant.age %></p>
 <p>Married: <%= @inhabitant.married %></p>
 <p>Role: <%= @inhabitant.role %></p>
+<%= link_to 'Update Inhabitant', edit_inhabitant_path(@inhabitant) %>
 <%= link_to "Delete Inhabitant", inhabitant_path(@inhabitant), method: :delete, data: { confirm: "Are you sure?" } %>
 
