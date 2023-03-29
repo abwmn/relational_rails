@@ -18,7 +18,7 @@ module Generator
     gaseous
     volcanic
     diverse
-  ]
+  ].freeze
   
   def generate_climate
     CLIMATES.sample
@@ -68,6 +68,7 @@ module Generator
         name: world.name == 'Earth' ? generate_earth_city_name : generate_alien_city_name,
         population: rand(42000..42000000),
         world_id: world.id,
+        technological_level: world.name == 'Earth' ? rand(6..9) : rand(0..99),
         inhabited: true
       )
       generate_inhabitants(city, rand(111..333))
