@@ -14,7 +14,7 @@ earth_cities.each do |city_name|
   city = City.create!(
     name: city_name,
     population: rand(6000000..9000000),
-    technological_level: rand(6..9)
+    technological_level: rand(6..9),
     world_id: earth.id,
     inhabited: true
   )
